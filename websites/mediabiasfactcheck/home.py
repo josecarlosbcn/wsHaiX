@@ -14,7 +14,7 @@ class Home:
         pm = soup.find("ul", id="mega-menu-info_nav")
         list = pm.find_all("a", class_="mega-menu-link")
         result = {}
-        valid_menu_options = ["Left", "Left-Center", "Least Biased", "Right-Center", "Right", "Conspirancy-Pseudoscience",
+        valid_menu_options = ["Left", "Left-Center", "Least Biased", "Right-Center", "Right", "Conspiracy-Pseudoscience",
                         "Questionable Sources", "Pro-Science", "Satire"]
         for element in list:
             if element.string is not None and element.string in valid_menu_options:

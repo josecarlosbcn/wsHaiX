@@ -11,6 +11,7 @@ class WebScrapping:
         home = Home(url)
         excel = MediaBiasFatchcheckEXCEL(URL.EXCEL_FILE)
         rows = 1
+        print("START OF PROCESS!!!")
         for k, v in home.menu.items():
             print(f"\nProcessing {k} bias websites")
             pagel1 = LevelOnePage(v)
@@ -24,3 +25,4 @@ class WebScrapping:
                 print(f"--- End of processing of content of page: {v1}")
                 rows += 1
             print(f"End of processing {k} bias websites")
+        print("\nEND OF PROCESS!!!")

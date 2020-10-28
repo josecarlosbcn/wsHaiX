@@ -11,8 +11,7 @@ class MyTestCase(unittest.TestCase):
         #self.assertEqual(True, result)
 
     def test_level_page_two(self):
-        pagel2 = LevelTwoPage("https://mediabiasfactcheck.com/relevant-magazine/")
-        #print(pagel2.doc.soup.prettify())
+        pagel2 = LevelTwoPage("https://mediabiasfactcheck.com/committee-constructive-tomorrow-cfact-org/")
         print(pagel2.get_factual_reporting())
 
 
