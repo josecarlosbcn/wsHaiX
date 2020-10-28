@@ -8,82 +8,6 @@ class LevelTwoPage:
         self.doc = Document(url)
         #print(self.doc.soup.prettify())
 
-    # def __detect_tag_h3(self):
-    #     '''
-    #     :return: A dictionary with the result of the search and if any one of the types has been found
-    #     '''
-    #     soup = self.doc.soup
-    #     result = {}
-    #     try:
-    #         tag = soup.find_all("h3", attrs={"style": "text-align: center;"})[0].find_next("p")
-    #         if tag is not None:
-    #             result["mf"] = True if re.search(FACTUAL_REPORTING.MOSTLY_FACTUAL, str(tag.prettify())) is not None else False
-    #             result["mx"] = True if re.search(FACTUAL_REPORTING.MIXED, str(tag.prettify())) is not None else False
-    #             result["hg"] = True if re.search(FACTUAL_REPORTING.HIGH, str(tag.prettify())) is not None else False
-    #             result["lw"] = True if re.search(FACTUAL_REPORTING.LOW, str(tag.prettify())) is not None else False
-    #             result["vl"] = True if re.search(FACTUAL_REPORTING.VERY_LOW, str(tag.prettify())) is not None else False
-    #             result["vh"] = True if re.search(FACTUAL_REPORTING.VERY_HIGH, str(tag.prettify())) is not None else False
-    #             result["found"] = True if result["mf"] or result["mx"] or result["hg"] or result["lw"] or result["vl"] or result["vh"] else False
-    #     except IndexError:
-    #         result["found"] = False
-    #     return result
-    #
-    # def __detect_tag_div(self):
-    #     '''
-    #     :return: A dictionary with the result of the search and if any one of the types has been found
-    #     '''
-    #     soup = self.doc.soup
-    #     result = {}
-    #     tags = soup.find_all("div", class_="entry-content")
-    #     if len(tags) > 0:
-    #         for  t in tags:
-    #             result["mf"] = True if re.search(FACTUAL_REPORTING.MOSTLY_FACTUAL, str(t.prettify())) is not None else False
-    #             result["mx"] = True if re.search(FACTUAL_REPORTING.MIXED, str(t.prettify())) is not None else False
-    #             result["hg"] = True if re.search(FACTUAL_REPORTING.HIGH, str(t.prettify())) is not None else False
-    #             result["lw"] = True if re.search(FACTUAL_REPORTING.LOW, str(t.prettify())) is not None else False
-    #             result["vl"] = True if re.search(FACTUAL_REPORTING.VERY_LOW, str(t.prettify())) is not None else False
-    #             result["vh"] = True if re.search(FACTUAL_REPORTING.VERY_HIGH, str(t.prettify())) is not None else False
-    #             result["found"] = True if result["mf"] or result["mx"] or result["hg"] or result["lw"] or result["vl"] or result["vh"] else False
-    #             if result["found"]:
-    #                 break
-    #     else:
-    #         result["found"] = False
-    #     return result
-    #
-    # def __detect_tag_div2(self):
-    #     '''
-    #     :return: A dictionary with the result of the search and if any one of the types has been found
-    #     '''
-    #     soup = self.doc.soup
-    #     result = {}
-    #     tags = soup.find_all("div", class_="entry clearfix")
-    #     if len(tags) > 0:
-    #         for  t in tags:
-    #             result["mf"] = True if re.search(FACTUAL_REPORTING.MOSTLY_FACTUAL, str(t.prettify())) is not None else False
-    #             result["mx"] = True if re.search(FACTUAL_REPORTING.MIXED, str(t.prettify())) is not None else False
-    #             result["hg"] = True if re.search(FACTUAL_REPORTING.HIGH, str(t.prettify())) is not None else False
-    #             result["lw"] = True if re.search(FACTUAL_REPORTING.LOW, str(t.prettify())) is not None else False
-    #             result["vl"] = True if re.search(FACTUAL_REPORTING.VERY_LOW, str(t.prettify())) is not None else False
-    #             result["vh"] = True if re.search(FACTUAL_REPORTING.VERY_HIGH, str(t.prettify())) is not None else False
-    #             result["found"] = True if result["mf"] or result["mx"] or result["hg"] or result["lw"] or result["vl"] or result["vh"] else False
-    #             if result["found"]:
-    #                 break
-    #     return result
-    #
-    # def __detect_tag_image(self):
-    #     soup = self.doc.soup
-    #     result = {}
-    #     tags = soup.find("div", class_="entry clearfix").h2.find_all("img")[1]
-    #     fr = tags["data-image-title"][4:].upper()
-    #     result["mf"] = True if FACTUAL_REPORTING.MOSTLY_FACTUAL == fr else False
-    #     result["mx"] = True if FACTUAL_REPORTING.MIXED == fr else False
-    #     result["hg"] = True if FACTUAL_REPORTING.HIGH == fr else False
-    #     result["lw"] = True if FACTUAL_REPORTING.LOW == fr else False
-    #     result["vl"] = True if FACTUAL_REPORTING.VERY_LOW == fr else False
-    #     result["vh"] = True if FACTUAL_REPORTING.VERY_HIGH == fr else False
-    #     result["found"] = True if result["mf"] or result["mx"] or result["hg"] or result["lw"] or result["vl"] or result["vh"] else False
-    #     return result
-
     def __detect_tag_image(self):
         soup = self.doc.soup
         result = {}
@@ -143,13 +67,6 @@ class LevelTwoPage:
         '''
         if self.doc.soup is not None:
             result = self.__detect_tag_image()
-            # result = self.__detect_tag_h3()
-            # if not result["found"]:
-            #     result = self.__detect_tag_div()
-            #     if not result["found"]:
-            #         result = self.__detect_tag_div2()
-            #         if not result["found"]:
-            #             result = self.__detect_tag_image()
             if result["mf"]:
                 txt = FACTUAL_REPORTING.MOSTLY_FACTUAL
             if result["mx"]:
